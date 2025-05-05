@@ -71,11 +71,17 @@ for idx_doc, doc_url in enumerate(google_docs):
 {chunk}
 
 Peux-tu analyser cette partie du texte et identifier les principaux thèmes sociologiques abordés ?
-Merci de répondre sous forme d'une liste claire.
+Pour chaque thème identifié, indique :
+
+1. Le nom du thème
+2. Une courte explication (1-2 phrases)
+3. Un ou deux verbatim (extraits littéraux du texte) qui illustrent ce thème
+
+Merci de structurer ta réponse de manière claire et lisible.
 """
 
         payload = {
-            "model": "gemma-7b-it",
+            "model": "llama3-70b-8192",
             "messages": [
                 {"role": "user", "content": prompt}
             ]
