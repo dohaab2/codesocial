@@ -6,12 +6,14 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
-# Lire les fichiers
-with open("result_llm1.txt", "r", encoding="utf-8") as f1:
-    text1 = f1.read()
+# Lire et tronquer les fichiers à 10 000 caractères (≈ 2800 tokens chacun)
+def read_and_truncate(filepath, max_chars=10000):
+    with open(filepath, "r", encoding="utf-8") as f:
+        text = f.read()
+    return text[:max_chars]
 
-with open("result_llm2.txt", "r", encoding="utf-8") as f2:
-    text2 = f2.read()
+text1 = read_and_truncate("result_llm1.txt")
+text2 = read_and_truncate("result_llm2.txt")
 
 # Préparer le prompt
 prompt = f"""
@@ -34,7 +36,7 @@ headers = {
     "Content-Type": "application/json"
 }
 payload = {
-    "model": "llama3-8b-8192",
+    "model": "llama3-8b-8192",  # ou "llama3-70b-8192", si ton quota le permet
     "messages": [
         {"role": "user", "content": prompt}
     ]
