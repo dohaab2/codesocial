@@ -75,7 +75,7 @@ Merci de répondre sous forme d'une liste claire.
 """
 
         payload = {
-            "model": "gemma-7b-it",
+            "model": "llama3-8b-8192",
             "messages": [
                 {"role": "user", "content": prompt}
             ]
@@ -101,7 +101,7 @@ Merci de répondre sous forme d'une liste claire.
     global_result += result
 
 # Sauvegarde unique dans un seul fichier
-with open("result_llm1.txt", "w", encoding="utf-8") as out:
+with open("result_llm2.txt", "w", encoding="utf-8") as out:
     out.write(global_result)
 
-print("✅ Tous les résultats ont été enregistrés dans result_llm1.txt")
+print("✅ Tous les résultats ont été enregistrés dans result_llm2.txt")
